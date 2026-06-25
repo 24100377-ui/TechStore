@@ -686,11 +686,13 @@ async function doLogin() {
     const result = await apiPost('/auth/login', { Username: username, Password: password });
     loginAttempts = 0;
     currentUser = {
-      id: result.Id || result.id || result.UserId || result.userId,
-      username: result.Username || result.username || username,
-      fullname: result.Fullname || result.fullname || result.FullName || result.fullName || username,
-      role: (result.Role || result.role || 'staff').toLowerCase(),
+      id: result.Id || result.id || result.User?.Id || result.User?.id,
+      username: result.Username || result.username || result.User?.Username || result.User?.username || username,
+      fullname: result.Fullname || result.fullname || result.FullName || result.fullName 
+      || result.User?.Fullname || result.User?.fullname || username,
+      role: (result.Role || result.role || result.User?.Role || result.User?.role || 'staff').toLowerCase(),
       token: result.Token || result.token || result.access_token || '',
+
       lastLogin: new Date().toLocaleString('vi-VN'),
     };
     err.classList.remove('show');
