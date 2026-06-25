@@ -677,6 +677,12 @@ function togglePass(id, btn) {
 }
 
 async function doLogin() {
+  const result = await apiPost('/auth/login', { 
+  Username: username, 
+  Password: password 
+});
+
+console.log("LOGIN RESPONSE:", result);
   const now = Date.now();
   if (lockUntil > now) { document.getElementById('login-attempt-info').textContent = `Khóa ${Math.ceil((lockUntil - now) / 1000)}s`; return; }
   const username = document.getElementById('login-user').value.trim();
