@@ -1,5 +1,5 @@
 // ===================== CONFIG =====================
-const API_BASE = 'http://www.techstoreweb.somee.com/api';
+const API_BASE = 'https://www.techstoreweb.somee.com/api';
 
 // ===================== STATE =====================
 let db = {
